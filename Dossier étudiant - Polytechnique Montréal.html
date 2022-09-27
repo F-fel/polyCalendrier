@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<!-- saved from url=(0078)https://dossieretudiant.polymtl.ca/WebEtudiant7/PresentationHorairePersServlet -->
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+    <title>Dossier �tudiant - Polytechnique Montr�al</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <!-- Basic Page Needs
+  ================================================== -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Mobile Specific Metas
+  ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- CSS
+  ================================================== -->
+    <link rel="stylesheet" href="./Dossier �tudiant - Polytechnique Montr�al_files/base.css">
+    <link rel="stylesheet" href="./Dossier �tudiant - Polytechnique Montr�al_files/skeleton.css">
+    <link rel="stylesheet" href="./Dossier �tudiant - Polytechnique Montr�al_files/layout.css">
+    <link rel="stylesheet" href="./Dossier �tudiant - Polytechnique Montr�al_files/de_base.css">
+    <link rel="stylesheet" href="./Dossier �tudiant - Polytechnique Montr�al_files/jquery-ui.min.css">
+    <!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+    <!-- Favicons
+	================================================== -->
+    <link rel="shortcut icon" href="https://dossieretudiant.polymtl.ca/WebEtudiant7/images/favicon.ico">
+    <link rel="apple-touch-icon" href="https://dossieretudiant.polymtl.ca/WebEtudiant7/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="https://dossieretudiant.polymtl.ca/WebEtudiant7/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="https://dossieretudiant.polymtl.ca/WebEtudiant7/images/apple-touch-icon-114x114.png">
+    <script language="javascript">
+        function initialiser() {}
+
+        function retour(form) {
+            form.action = '/WebEtudiant7/RetourServlet';
+            form.submit(form);
+        }
+    </script>
+    <style type="text/css">
+        .notice {
+            color: #FF0000;
+            font-weight: bold
+        }
+        
+        .lienFormation {
+            font-weight: bold
+        }
+        
+        .conflitSeparator {
+            height: 10px;
+        }
+    </style>
+    <style type="text/css">
+        .wrapperPourListeCoursActuels div.tableListeCoursActuels {
+            margin-top: 0;
+            margin-bottom: 0 !important;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            border-top: 1px solid #DEDEDE !important;
+        }
+        
+        .wrapperPourListeCoursActuels div.tableListeCoursActuels:first-child {
+            border-top: none !important;
+        }
+        
+        .wrapperPourListeCoursActuels div.tableListeCoursActuels label {
+            display: none;
+        }
+        
+        .wrapperPourListeCoursActuels div.tableListeCoursActuels:first-child label {
+            display: inline;
+        }
+        
+        .wrapperPourListeCoursActuels div.tableListeCoursActuels:last-child {
+            margin-bottom: 20px !important;
+        }
+        
+        div.tableListeCoursActuels input {
+            width: 100%
+        }
+        
+        #totalCredit {
+            text-align: right
+        }
+        
+        .inputEmulator {
+            margin-bottom: 0;
+        }
+        
+        @media only screen and (max-width: 767px) {
+            .wrapperPourListeCoursActuels div.tableListeCoursActuels {
+                padding-top: 15px;
+                margin-bottom: 0 !important;
+            }
+            .wrapperPourListeCoursActuels div.tableListeCoursActuels:first-child {
+                display: none;
+            }
+            .wrapperPourListeCoursActuels div.tableListeCoursActuels div.columns[class~="pourFlip"]:first-child label {
+                display: inline;
+                text-transform: uppercase;
+            }
+            .heure {
+                font-weight: bold;
+            }
+            #totalCredit {
+                text-align: left
+            }
+            .inputEmulator {
+                margin-bottom: 10px;
+                min-height: 0;
+            }
+            .camoufler,
+            .camoufler+div {
+                display: none !important;
+            }
+            .wrapperPourListeCoursActuels div.tableListeCoursActuels div.columns[class~="pourFlip"]:first-child {
+                display: inline !important;
+            }
+            .wrapperPourListeCoursActuels div.tableListeCoursActuels div.columns[class~="camoufler"]:first-child div.heure {
+                display: none;
+            }
+        }
+    </style>
+    <style type="text/css">
+        .wrapperPourListeCoursResume div.tableListeCoursActuels {
+            margin-top: 0;
+            margin-bottom: 0 !important;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            border-top: 1px solid #DEDEDE !important;
+        }
+        
+        .wrapperPourListeCoursResume div.tableListeCoursActuels:first-child {
+            border-top: none !important;
+        }
+        
+        .wrapperPourListeCoursResume div.tableListeCoursActuels label {
+            display: none;
+        }
+        
+        .wrapperPourListeCoursResume div.tableListeCoursActuels:first-child label {
+            display: inline;
+        }
+        
+        .wrapperPourListeCoursResume div.tableListeCoursActuels:last-child {
+            margin-bottom: 20px !important;
+        }
+        
+        @media only screen and (max-width: 767px) {
+            .wrapperPourListeCoursResume div.tableListeCoursActuels:first-child label {
+                display: none;
+            }
+            .wrapperPourListeCoursResume div.tableListeCoursActuels {
+                padding-top: 15px;
+                margin-bottom: 0 !important;
+            }
+            .wrapperPourListeCoursResume div.tableListeCoursActuels:first-child {
+                padding-top: 0
+            }
+            .wrapperPourListeCoursResume div.tableListeCoursActuels label {
+                display: inline;
+            }
+            .wrapperPourListeCoursResume div.tableListeCoursActuels label {
+                display: none;
+            }
+            .wrapperPourListeCoursResume div.tableListeCoursActuels div.columns:nth-child(3) label,
+            .wrapperPourListeCoursResume div.tableListeCoursActuels div.columns:nth-child(4) label,
+            .wrapperPourListeCoursResume div.tableListeCoursActuels div.columns:nth-child(5) label {
+                display: inline;
+            }
+            .wrapperPourListeCoursResume div.tableListeCoursActuels div.columns:first-child div.inputEmulator {
+                font-weight: bold;
+                margin-bottom: 0 !important;
+            }
+            .wrapperPourListeCoursResume div.tableListeCoursActuels:last-child label {
+                display: none !important;
+            }
+            .wrapperPourListeCoursResume div.tableListeCoursActuels:last-child div.columns:nth-child(1),
+            .wrapperPourListeCoursResume div.tableListeCoursActuels:last-child div.columns:nth-child(2),
+            .wrapperPourListeCoursResume div.tableListeCoursActuels:last-child div.columns:nth-child(3) {
+                display: none;
+            }
+            .wrapperPourListeCoursResume div.tableListeCoursActuels:last-child div.columns:nth-child(4) {
+                font-weight: bold
+            }
+            .wrapperPourListeCoursResume div.tableListeCoursActuels:last-child div.columns:nth-child(4) div.inputEmulator {
+                margin-bottom: 0
+            }
+        }
+    </style>
+    <script src="./Dossier �tudiant - Polytechnique Montr�al_files/jquery.min.js.download"></script>
+    <script src="./Dossier �tudiant - Polytechnique Montr�al_files/jquery.min.js(1).download"></script>
+    <script src="./Dossier �tudiant - Polytechnique Montr�al_files/media.match.min.js.download"></script>
+    <script src="./Dossier �tudiant - Polytechnique Montr�al_files/enquire.min.js.download"></script>
+    <script language="javascript">
+        $(document).ready(function() {
+            enquire.register("screen and (max-width: 767px)", {
+                match: function() {
+                    flipDiv("petit");
+                },
+                unmatch: function() {
+                    $("div").remove(".pourFlip");
+                    flipDiv("grand");
+                }
+            });
+        });
+
+        /*Fonction bas�e sur flipTable : http://stackoverflow.com/questions/6297591/how-to-invert-the-rows-and-columns-of-an-html-table*/
+        function flipDiv(mode) {
+            $("div.wrapperPourListeCoursActuels").each(function() {
+                var $this = $(this);
+                var newrows = [];
+                $this.find("div.row").each(function() {
+                    var i = 0;
+                    heure = $(this).children().eq(0).children().eq(1).text();
+
+                    $(this).find("div.columns").each(function() {
+                        i++;
+                        if (newrows[i] === undefined) {
+                            newrows[i] = $("<div class=\"row replace-bottom tableListeCoursActuels\"></div>");
+                        }
+
+                        if (mode == "petit") {
+                            journee = $(this).children().eq(0).text();
+                            /*16 �quivaut � la longueur du texte d'une case horaire contenant seulement le nom de la journ�e sans cours.*/
+                            if ($(this).children().text().length > 16) {
+                                newrows[i].append($("<div class=\"two columns pourFlip\"><label>" + journee + "</label><div class=\"heure\">" + heure + "</div></div>"));
+                            } else {
+                                newrows[i].append($("<div class=\"two columns pourFlip camoufler\"><label>" + journee + "</label><div class=\"heure\">" + heure + "</div></div>"));
+                            }
+                        }
+
+                        newrows[i].append($(this));
+                    });
+                });
+                $this.find("div.row").remove();
+
+                $.each(newrows, function() {
+                    $this.append(this);
+                });
+            });
+
+            return false;
+        }
+    </script>
+    <!-- Inclusion de header_sub.template  - debut -->
+</head>
+
+<body onload="initialiser();" style="position: initial; overflow: initial;">
+    <div id="bordureEntete"></div>
+    <div id="wrapper">
+        <div id="filetEntete"></div>
+        <div class="container">
+            <div class="sixteen columns" id="headerDiv">
+                <img src="./Dossier �tudiant - Polytechnique Montr�al_files/PolyGaucheLogo.png" alt="Logo Polytechnique Montr�al" id="logoPolyEntete">
+                <h1 class="titreEntete">DOSSIER �TUDIANT</h1>
+            </div>
+            <!-- Inclusion de header_sub.template  - fin -->
+            <div class="row">
+                <div class="sixteen columns">
+                    <span class="lienEntete">
+                        [<a href="https://www.polymtl.ca/aide-dossier-etudiant/" target="_blank">AIDE</a>]&nbsp;
+                        [<a href="https://dossieretudiant.polymtl.ca/WebEtudiant7/SortieServlet">D�connexion</a>]
+                    </span>
+                    <h2 class="titre">Horaire Personnel</h2>
+                </div>
+                <!-- rang�e pour le sous-titre. Je n'utilise pas volotairement un autre div.row -->
+                <div class="eight columns colSoustitreGauche">
+                    <h2 class="sousTitre">Baccalaur�at en ing�nierie - G�nie informatique</h2>
+                </div>
+                <div class="eight columns colSoustitreDroite">
+                    <h2 class="sousTitre">Trimestre: A 2022 Date: 25/09/2022</h2>
+                </div>
+            </div>
+
+            <form method="post" action="https://dossieretudiant.polymtl.ca/WebEtudiant7/AfficheTemplateServlet">
+
+                <div class="row">
+                    <div class="sixteen columns">
+                        <p class="noteEncadree">Pour prot�ger la confidentialit� de votre dossier, vous devez vous d�connecter lorsque vous aurez termin� votre consultation.</p>
+
+                    </div>
+                </div>
+
+                <hr>
+
+
+                <div class="row">
+                    <div class="sixteen columns">
+                        <h3>Liste des cours et des groupes</h3>
+                    </div>
+                </div>
+
+                <div class="wrapperPourListeCoursResume">
+                    <div class="row replace-bottom tableListeCoursActuels">
+                        <div class="two columns"><label>Sigle</label>
+                            <div class="inputEmulator">INF8500 </div>
+                        </div>
+                        <div class="six columns"><label>Intitul�</label>
+                            <div class="inputEmulator">SYSTEMES EMB. CONC. ET VERIF. <br>Guy Bois </div>
+                        </div>
+                        <div class="three columns"><label>Groupe th�orique</label>
+                            <div class="inputEmulator">01</div>
+                        </div>
+                        <div class="three columns"><label>Groupe laboratoire</label>
+                            <div class="inputEmulator">01</div>
+                        </div>
+                        <div class="two columns"><label>Cr�dits</label>
+                            <div class="inputEmulator">03</div>
+                        </div>
+                    </div>
+                    <div class="row replace-bottom tableListeCoursActuels">
+                        <div class="two columns"><label>Sigle</label>
+                            <div class="inputEmulator">INF8601 </div>
+                        </div>
+                        <div class="six columns"><label>Intitul�</label>
+                            <div class="inputEmulator">SYSTEMES INFORMA. PARALLELES <br>Michel Dagenais </div>
+                        </div>
+                        <div class="three columns"><label>Groupe th�orique</label>
+                            <div class="inputEmulator">01</div>
+                        </div>
+                        <div class="three columns"><label>Groupe laboratoire</label>
+                            <div class="inputEmulator">01</div>
+                        </div>
+                        <div class="two columns"><label>Cr�dits</label>
+                            <div class="inputEmulator">03</div>
+                        </div>
+                    </div>
+                    <div class="row replace-bottom tableListeCoursActuels">
+                        <div class="two columns"><label>Sigle</label>
+                            <div class="inputEmulator">INF8775 </div>
+                        </div>
+                        <div class="six columns"><label>Intitul�</label>
+                            <div class="inputEmulator">ANALYSE ET CONCEPTION D'ALGOR. <br>Gilles Pesant </div>
+                        </div>
+                        <div class="three columns"><label>Groupe th�orique</label>
+                            <div class="inputEmulator">01</div>
+                        </div>
+                        <div class="three columns"><label>Groupe laboratoire</label>
+                            <div class="inputEmulator">01</div>
+                        </div>
+                        <div class="two columns"><label>Cr�dits</label>
+                            <div class="inputEmulator">03</div>
+                        </div>
+                    </div>
+                    <div class="row replace-bottom tableListeCoursActuels">
+                        <div class="two columns"><label>Sigle</label>
+                            <div class="inputEmulator">MTH1102 </div>
+                        </div>
+                        <div class="six columns"><label>Intitul�</label>
+                            <div class="inputEmulator">CALCUL II <br>Mathieu Gervais-Dub� </div>
+                        </div>
+                        <div class="three columns"><label>Groupe th�orique</label>
+                            <div class="inputEmulator">02</div>
+                        </div>
+                        <div class="three columns"><label>Groupe laboratoire</label>
+                            <div class="inputEmulator">02</div>
+                        </div>
+                        <div class="two columns"><label>Cr�dits</label>
+                            <div class="inputEmulator">02</div>
+                        </div>
+                    </div>
+                    <div class="row replace-bottom tableListeCoursActuels">
+                        <div class="two columns"><label>Sigle</label>
+                            <div class="inputEmulator">SSH3201 </div>
+                        </div>
+                        <div class="six columns"><label>Intitul�</label>
+                            <div class="inputEmulator">ECONOMIQUE DE L'INGENIEUR <br>Mohammed Khalfoun </div>
+                        </div>
+                        <div class="three columns"><label>Groupe th�orique</label>
+                            <div class="inputEmulator">02</div>
+                        </div>
+                        <div class="three columns"><label>Groupe laboratoire</label>
+                            <div class="inputEmulator">02</div>
+                        </div>
+                        <div class="two columns"><label>Cr�dits</label>
+                            <div class="inputEmulator">03</div>
+                        </div>
+                    </div>
+                    <div class="row replace-bottom tableListeCoursActuels">
+                        <div class="two columns"><label>Sigle</label>
+                            <div class="inputEmulator">&nbsp;</div>
+                        </div>
+                        <div class="six columns"><label>Intitul�</label>
+                            <div class="inputEmulator">&nbsp;</div>
+                        </div>
+                        <div class="three columns"><label>Groupe th�orique</label>
+                            <div class="inputEmulator">&nbsp;</div>
+                        </div>
+                        <div class="three columns"><label>Groupe laboratoire</label>
+                            <div class="inputEmulator">Total des cr�dits:</div>
+                        </div>
+                        <div class="two columns"><label>Cr�dits</label>
+                            <div class="inputEmulator">14</div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!--
+	<div class="wrapperPourListeCoursActuels">
+    	<div class="row replace-bottom tableListeCoursActuels">
+        	<div class="two columns">
+                <label>Sigle</label>
+                <div class="inputEmulator">MEC1420</div>
+            </div>
+            <div class="six columns">
+            	<label>Intitul&eacute;</label>
+                <div class="inputEmulator">RESISTANCE DES MATERIAUX I <br>
+            Magali Marcheschi</div>
+            </div>
+            <div class="three columns">
+                <label>Groupe  th&eacute;orique</label>
+                <div class="inputEmulator">03&#160;</div>
+            </div>
+            <div class="three columns">
+                <label>Groupe laboratoire</label>
+                <div class="inputEmulator">03&#160;</div>
+            </div>
+            <div class="two columns">
+                <label>Cr&eacute;dits</label>
+                <div class="inputEmulator">03</div>
+            </div>
+        </div>
+        
+        <div class="row replace-bottom tableListeCoursActuels">
+        	<div class="two columns">
+                <label>Sigle</label>
+                <div class="inputEmulator">MEC1510</div>
+            </div>
+            <div class="six columns">
+            	<label>Intitul&eacute;</label>
+                <div class="inputEmulator">MODEL. SYSTEMES MECANIQUES <br>
+            Jonathan Daniel-Rivest</div>
+            </div>
+            <div class="three columns">
+                <label>Groupe  th&eacute;orique</label>
+                <div class="inputEmulator">01&#160;</div>
+            </div>
+            <div class="three columns">
+                <label>Groupe laboratoire</label>
+                <div class="inputEmulator">01&#160;</div>
+            </div>
+            <div class="two columns">
+                <label>Cr&eacute;dits</label>
+                <div class="inputEmulator">03</div>
+            </div>
+        </div>
+        
+        <div class="row replace-bottom tableListeCoursActuels">
+        	<div class="two columns">
+                <label>Sigle</label>
+                <div class="inputEmulator">MEC3000A</div>
+            </div>
+            <div class="six columns">
+            	<label>Intitul&eacute;</label>
+                <div class="inputEmulator">ATELIER EN CEO <br>
+            Dominique Chass�</div>
+            </div>
+            <div class="three columns">
+                <label>Groupe  th&eacute;orique</label>
+                <div class="inputEmulator">01&#160;</div>
+            </div>
+            <div class="three columns">
+                <label>Groupe laboratoire</label>
+                <div class="inputEmulator">&#160;</div>
+            </div>
+            <div class="two columns">
+                <label>Cr&eacute;dits</label>
+                <div class="inputEmulator">00</div>
+            </div>
+        </div>
+
+        <div class="row replace-bottom tableListeCoursActuels">
+        	<div class="fourteen columns" id="totalCredit">
+            	<label class="toujoursVisible">Total des cr�dits :</label>
+            </div>
+            <div class="two columns">                
+                <div class="inputEmulator">13</div>
+            </div>
+        </div>
+	</div>
+    -->
+
+
+                <div class="row">
+                    <div class="sixteen columns">
+                        <h3>Horaire D�taill� </h3>
+                    </div>
+                </div>
+
+                <div class="wrapperPourListeCoursActuels">
+
+                    <div class="row replace-bottom tableListeCoursActuels">
+                        <div class="two columns"><label>P�riode</label>
+                            <div class="inputEmulator">08h30</div>
+                        </div>
+                        <div class="two columns"><label>Lundi</label>
+                            <div class="inputEmulator">&nbsp;</div>
+                        </div>
+                        <div class="two columns"><label>Mardi</label>
+                            <div class="inputEmulator">SSH3201 (02) M-1510 </div>
+                        </div>
+                        <div class="two columns"><label>Mercredi</label>
+                            <div class="inputEmulator">INF8601 (01) B-316.1 </div>
+                        </div>
+                        <div class="two columns"><label>Jeudi</label>
+                            <div class="inputEmulator">&nbsp;</div>
+                        </div>
+                        <div class="two columns"><label>Vendredi</label>
+                            <div class="inputEmulator">INF8775 (01) M-1510 </div>
+                        </div>
+                        <div class="two columns"><label>Samedi</label>
+                            <div class="inputEmulator">&nbsp;</div>
+                        </div>
+                        <div class="two columns"><label>Dimanche</label>
+                            <div class="inputEmulator">&nbsp;</div>
+                        </div>
+                    </div>
+                    <div class="row replace-bottom tableListeCoursActuels">
+                        <div class="two columns"><label>P�riode</label>
+                            <div class="inputEmulator">09h30</div>
+                        </div>
+                        <div class="two columns"><label>Lundi</label>
+                            <div class="inputEmulator">&nbsp;</div>
+                        </div>
+                        <div class="two columns"><label>Mardi</label>
+                            <div class="inputEmulator">SSH3201 (02) M-1510 </div>
+                        </div>
+                        <div class="two columns"><label>Mercredi</label>
+                            <div class="inputEmulator">INF8601 (01) B-316.1 </div>
+                        </div>
+                        <div class="two columns"><label>Jeudi</label>
+                            <div class="inputEmulator">&nbsp;</div>
+                        </div>
+                        <div class="two columns"><label>Vendredi</label>
+                            <div class="inputEmulator">INF8775 (01) M-1510 </div>
+                        </div>
+                        <div class="two columns"><label>Samedi</label>
+                            <div class="inputEmulator">&nbsp;</div>
+                        </div>
+                        <div class="two columns"><label>Dimanche</label>
+                            <div class="inputEmulator">&nbsp;</div>
+                        </div>
+                    </div>
+                    <div class="row replace-bottom tableListeCoursActuels">
+                        <div class="two columns"><label>P�riode</label>
+                            <div class="inputEmulator">10h30</div>
+                        </div>
+                        <div class="two columns"><label>Lundi</label>
+                            <div class="inputEmulator">&nbsp;</div>
+                        </div>
+                        <div class="two columns"><label>Mardi</label>
+                            <div class="inputEmulator">SSH3201 (02) M-1510 </div>
+                        </div>
+                        <div class="two columns"><label>Mercredi</label>
+                            <div class="inputEmulator">INF8601 (01) B-316.1 </div>
+                        </div>
+                        <div class="two columns"><label>Jeudi</label>
+                            <div class="inputEmulator">&nbsp;</div>
+                        </div>
+                        <div class="two columns"><label>Vendredi</label>
+                            <div class="inputEmulator">INF8775 (01) M-1510 </div>
+                        </div>
+                        <div class="two columns"><label>Samedi</label>
+                            <div class="inputEmulator">&nbsp;</div>
+                        </div>
+                        <div class="two columns"><label>Dimanche</label>
+                            <div class="inputEmulator">&nbsp;</div>
+                        </div>
+                    </div>
+                    <div class="row replace-bottom tableListeCoursActuels">
+                        <div class="two columns"><label>P�riode</label>
+                            <div class="inputEmulator">11h30</div>
+                        </div>
+                        <div class="two columns"><label>Lundi</label>
+                            <div class="inputEmulator">&nbsp;</div>
+                        </div>
+                        <div class="two columns"><label>Mardi</label>
+                            <div class="inputEmulator">&nbsp;</div>
+                        </div>
+                        <div class="two columns"><label>Mercredi</label>
+                            <div class="inputEmulator">&nbsp;</div>
+                        </div>
+                        <div class="two columns"><label>Jeudi</label>
+                            <div class="inputEmulator">&nbsp;</div>
+                        </div>
+                        <div class="two columns"><label>Vendredi</label>
+                            <div class="inputEmulator">&nbsp;</div>
+                        </div>
+                        <div class="two columns"><label>Samedi</label>
+                            <div class="inputEmulator">&nbsp;</div>
+                        </div>
+                        <div class="two columns"><label>Dimanche</label>
+                            <div class="inputEmulator">&nbsp;</div>
+                        </div>
+                    </div>
+                    <div class="row replace-bottom tableListeCoursActuels">
+                        <div class="two columns"><label>P�riode</label>
+                            <div class="inputEmulator">12h45</div>
+                        </div>
+                        <div class="two columns"><label>Lundi</label>
+                            <div class="inputEmulator">&nbsp;</div>
+                        </div>
+                        <div class="two columns"><label>Mardi</label>
+                            <div class="inputEmulator">INF8500 (01) M-2204 </div>
+                        </div>
+                        <div class="two columns"><label>Mercredi</label>
+                            <font color="#FF0000">
+                                <div class="inputEmulator">INF8500 (01) L-3712 <br>Lab. 2 sem. (B1)</div>
+                                <div class="conflitSeparator"></div>
+                                <div class="inputEmulator">INF8775 (01) L-4714 <br>Lab. 2 sem. (B1)</div>
+                            </font>
+                        </div>
+                        <div class="two columns"><label>Jeudi</label>
+                            <div class="inputEmulator">&nbsp;</div>
+                        </div>
+                        <div class="two columns"><label>Vendredi</label>
+                            <div class="inputEmulator">&nbsp;</div>
+                        </div>
+                        <div class="two columns"><label>Samedi</label>
+                            <div class="inputEmulator">&nbsp;</div>
+                        </div>
+                        <div class="two columns"><label>Dimanche</label>
+                            <div class="inputEmulator">&nbsp;</div>
+                        </div>
+                    </div>
+                    <div class="row replace-bottom tableListeCoursActuels">
+                        <div class="two columns"><label>P�riode</label>
+                            <div class="inputEmulator">13h45</div>
+                        </div>
+                        <div class="two columns"><label>Lundi</label>
+                            <div class="inputEmulator">&nbsp;</div>
+                        </div>
+                        <div class="two columns"><label>Mardi</label>
+                            <div class="inputEmulator">INF8500 (01) M-2204 </div>
+                        </div>
+                        <div class="two columns"><label>Mercredi</label>
+                            <font color="#FF0000">
+                                <div class="inputEmulator">INF8500 (01) L-3712 <br>Lab. 2 sem. (B1)</div>
+                                <div class="conflitSeparator"></div>
+                                <div class="inputEmulator">INF8775 (01) L-4714 <br>Lab. 2 sem. (B1)</div>
+                            </font>
+                        </div>
+                        <div class="two columns"><label>Jeudi</label>
+                            <div class="inputEmulator">&nbsp;</div>
+                        </div>
+                        <div class="two columns"><label>Vendredi</label>
+                            <div class="inputEmulator">&nbsp;</div>
+                        </div>
+                        <div class="two columns"><label>Samedi</label>
+                            <div class="inputEmulator">&nbsp;</div>
+                        </div>
+                        <div class="two columns"><label>Dimanche</label>
+                            <div class="inputEmulator">&nbsp;</div>
+                        </div>
+                    </div>
+                    <div class="row replace-bottom tableListeCoursActuels">
+                        <div class="two columns"><label>P�riode</label>
+                            <div class="inputEmulator">14h45</div>
+                        </div>
+                        <div class="two columns"><label>Lundi</label>
+                            <div class="inputEmulator">&nbsp;</div>
+                        </div>
+                        <div class="two columns"><label>Mardi</label>
+                            <div class="inputEmulator">INF8500 (01) M-2204 </div>
+                        </div>
+                        <div class="two columns"><label>Mercredi</label>
+                            <font color="#FF0000">
+                                <div class="inputEmulator">INF8500 (01) L-3712 <br>Lab. 2 sem. (B1)</div>
+                                <div class="conflitSeparator"></div>
+                                <div class="inputEmulator">INF8775 (01) L-4714 <br>Lab. 2 sem. (B1)</div>
+                            </font>
+                        </div>
+                        <div class="two columns"><label>Jeudi</label>
+                            <div class="inputEmulator">&nbsp;</div>
+                        </div>
+                        <div class="two columns"><label>Vendredi</label>
+                            <div class="inputEmulator">&nbsp;</div>
+                        </div>
+                        <div class="two columns"><label>Samedi</label>
+                            <div class="inputEmulator">&nbsp;</div>
+                        </div>
+                        <div class="two columns"><label>Dimanche</label>
+                            <div class="inputEmulator">&nbsp;</div>
+                        </div>
+                    </div>
+                    <div class="row replace-bottom tableListeCoursActuels">
+                        <div class="two columns"><label>P�riode</label>
+                            <div class="inputEmulator">15h45</div>
+                        </div>
+                        <div class="two columns"><label>Lundi</label>
+                            <div class="inputEmulator">MTH1102 (02) B-316.1 </div>
+                        </div>
+                        <div class="two columns"><label>Mardi</label>
+                            <div class="inputEmulator">INF8601 (01) L-4712 <br>Lab. 2 sem. (B1)</div>
+                        </div>
+                        <div class="two columns"><label>Mercredi</label>
+                            <div class="inputEmulator">SSH3201 (02) L-6616 <br>Lab. 2 sem. (B2)</div>
+                        </div>
+                        <div class="two columns"><label>Jeudi</label>
+                            <div class="inputEmulator">MTH1102 (02) A-410 <br>Lab. Hebdo.</div>
+                        </div>
+                        <div class="two columns"><label>Vendredi</label>
+                            <div class="inputEmulator">&nbsp;</div>
+                        </div>
+                        <div class="two columns"><label>Samedi</label>
+                            <div class="inputEmulator">&nbsp;</div>
+                        </div>
+                        <div class="two columns"><label>Dimanche</label>
+                            <div class="inputEmulator">&nbsp;</div>
+                        </div>
+                    </div>
+                    <div class="row replace-bottom tableListeCoursActuels">
+                        <div class="two columns"><label>P�riode</label>
+                            <div class="inputEmulator">16h45</div>
+                        </div>
+                        <div class="two columns"><label>Lundi</label>
+                            <div class="inputEmulator">MTH1102 (02) B-316.1 </div>
+                        </div>
+                        <div class="two columns"><label>Mardi</label>
+                            <div class="inputEmulator">INF8601 (01) L-4712 <br>Lab. 2 sem. (B1)</div>
+                        </div>
+                        <div class="two columns"><label>Mercredi</label>
+                            <div class="inputEmulator">SSH3201 (02) L-6616 <br>Lab. 2 sem. (B2)</div>
+                        </div>
+                        <div class="two columns"><label>Jeudi</label>
+                            <div class="inputEmulator">MTH1102 (02) A-410 <br>Lab. Hebdo.</div>
+                        </div>
+                        <div class="two columns"><label>Vendredi</label>
+                            <div class="inputEmulator">&nbsp;</div>
+                        </div>
+                        <div class="two columns"><label>Samedi</label>
+                            <div class="inputEmulator">&nbsp;</div>
+                        </div>
+                        <div class="two columns"><label>Dimanche</label>
+                            <div class="inputEmulator">&nbsp;</div>
+                        </div>
+                    </div>
+                    <div class="row replace-bottom tableListeCoursActuels">
+                        <div class="two columns"><label>P�riode</label>
+                            <div class="inputEmulator">17h45</div>
+                        </div>
+                        <div class="two columns"><label>Lundi</label>
+                            <div class="inputEmulator">&nbsp;</div>
+                        </div>
+                        <div class="two columns"><label>Mardi</label>
+                            <div class="inputEmulator">INF8601 (01) L-4712 <br>Lab. 2 sem. (B1)</div>
+                        </div>
+                        <div class="two columns"><label>Mercredi</label>
+                            <div class="inputEmulator">SSH3201 (02) L-6616 <br>Lab. 2 sem. (B2)</div>
+                        </div>
+                        <div class="two columns"><label>Jeudi</label>
+                            <div class="inputEmulator">&nbsp;</div>
+                        </div>
+                        <div class="two columns"><label>Vendredi</label>
+                            <div class="inputEmulator">&nbsp;</div>
+                        </div>
+                        <div class="two columns"><label>Samedi</label>
+                            <div class="inputEmulator">&nbsp;</div>
+                        </div>
+                        <div class="two columns"><label>Dimanche</label>
+                            <div class="inputEmulator">&nbsp;</div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!--
+    <div class="wrapperPourListeCoursActuels">
+    	<div class="row replace-bottom tableListeCoursActuels">
+        	<div class="two columns">
+                <label>P&eacute;riode</label>
+                <div class="inputEmulator">08h30</div>
+            </div>
+            <div class="two columns">
+            	<label>Lundi</label>
+                <div class="inputEmulator">MTH1102    (06) B-543 <br>
+            Lab. Hebdo.&#160;</div>
+            </div>
+            <div class="two columns">
+                <label>Mardi</label>
+                <div class="inputEmulator">&#160;</div>
+            </div>
+            <div class="two columns">
+                <label>Mercredi</label>
+                <div class="inputEmulator">&#160;</div>
+            </div>
+            <div class="two columns">
+                <label>Jeudi</label>
+                <div class="inputEmulator">&#160;</div>
+            </div>
+            <div class="two columns">
+                <label>Vendredi</label>
+                <div class="inputEmulator">&#160;</div>
+            </div>
+            
+            <div class="two columns">
+                <label>Samedi</label>
+                <div class="inputEmulator">MEC1510    (01) M-2002    &#160;</div>
+            </div>
+            <div class="two columns">
+                <label>Dimanche</label>
+                <div class="inputEmulator">MEC1510    (01) M-2002    &#160;</div>
+            </div>
+        </div>
+        
+        <div class="row replace-bottom tableListeCoursActuels">
+        	<div class="two columns">
+                <label>P&eacute;riode</label>
+                <div class="inputEmulator">09h30</div>
+            </div>
+            <div class="two columns">
+            	<label>Lundi</label>
+                <div class="inputEmulator">MTH1102    (06) B-543 <br>
+            Lab. Hebdo.&#160;</div>
+            </div>
+            <div class="two columns">
+                <label>Mardi</label>
+                <div class="inputEmulator">&#160;</div>
+            </div>
+            <div class="two columns">
+                <label>Mercredi</label>
+                <div class="inputEmulator">&#160;</div>
+            </div>
+            <div class="two columns">
+                <label>Jeudi</label>
+                <div class="inputEmulator">&#160;</div>
+            </div>
+            <div class="two columns">
+                <label>Vendredi</label>
+                <div class="inputEmulator">&#160;</div>
+            </div>
+        </div>
+    
+    	<div class="row replace-bottom tableListeCoursActuels">
+        	<div class="two columns">
+                <label>P&eacute;riode</label>
+                <div class="inputEmulator">10h30</div>
+            </div>
+            <div class="two columns">
+            	<label>Lundi</label>
+                <div class="inputEmulator">&#160;</div>
+            </div>
+            <div class="two columns">
+                <label>Mardi</label>
+                <div class="inputEmulator">&#160;</div>
+            </div>
+            <div class="two columns">
+                <label>Mercredi</label>
+                <div class="inputEmulator">&#160;</div>
+            </div>
+            <div class="two columns">
+                <label>Jeudi</label>
+                <div class="inputEmulator">&#160;</div>
+            </div>
+            <div class="two columns">
+                <label>Vendredi</label>
+                <div class="inputEmulator">MEC1420    (03) M-1420    &#160;</div>
+            </div>
+        </div>
+        
+   		<div class="row replace-bottom tableListeCoursActuels">
+        	<div class="two columns">
+                <label>P&eacute;riode</label>
+                <div class="inputEmulator">15h45&#160;</div>
+            </div>
+            <div class="two columns">
+            	<label>Lundi</label>
+                <div class="inputEmulator">MEC1510    (01) L-6657 <br>
+            Lab. Hebdo.&#160;</div>
+            </div>
+            <div class="two columns">
+                <label>Mardi</label>
+                <div class="inputEmulator">MEC1420    (03) M-1410    &#160;</div>
+            </div>
+            <div class="two columns">
+                <label>Mercredi</label>
+                <div class="inputEmulator">MTH1006    (07) B-405     &#160;</div>
+            </div>
+            <div class="two columns">
+                <label>Jeudi</label>
+                <div class="inputEmulator">MEC1510    (01) M-2002    &#160;</div>
+            </div>
+            <div class="two columns">
+                <label>Vendredi</label>
+                <div class="inputEmulator">MTH1006    (07) B-543 <br>
+            Lab. Hebdo.&#160;</div>
+            </div>
+        </div>            
+    </div>
+    -->
+
+                <hr>
+
+                <div class="row">
+                    <div class="sixteen columns">
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="sixteen columns">
+                        <a href="https://dossieretudiant.polymtl.ca/WebEtudiant7/ValidationServlet">Retour �
+                            l'accueil</a>
+                    </div>
+                </div>
+
+                <input type="hidden" name="matricule" value="1875036">
+                <input type="hidden" name="choixProgramme" value="">
+                <input type="hidden" name="dateDebutTrimestre" value="">
+                <input type="hidden" name="choixProgrammeDates" value="">
+                <input type="hidden" name="token" value="">
+                <input type="hidden" name="trimestreActuel" value=" ">
+                <input type="hidden" name="dateFinTrimestre" value=" ">
+                <input type="hidden" name="choixProgrammeModif" value="">
+                <input type="hidden" name="choixTrimestre" value=" ">
+                <input type="hidden" name="messagePasOK" value=" ">
+                <input type="hidden" name="trimestreProp" value="20223">
+                <input type="hidden" name="trimestreModif" value="20223">
+                <input type="hidden" name="nbreProg" value="1">
+                <input type="hidden" name="conflits10" value="">
+                <input type="hidden" name="conflits11" value="">
+                <input type="hidden" name="conflits12" value="">
+                <input type="hidden" name="conflits13" value="">
+                <input type="hidden" name="conflits14" value="">
+                <input type="hidden" name="conflits15" value="">
+                <input type="hidden" name="conflits16" value="">
+                <input type="hidden" name="conflits17" value="">
+                <input type="hidden" name="conflits18" value="">
+                <input type="hidden" name="conflits19" value="">
+                <input type="hidden" name="conflits20" value="">
+                <input type="hidden" name="conflits21" value="">
+                <input type="hidden" name="conflits22" value="">
+                <input type="hidden" name="conflits23" value="">
+                <input type="hidden" name="conflits24" value="">
+                <input type="hidden" name="conflits25" value="">
+                <input type="hidden" name="conflits26" value="">
+                <input type="hidden" name="conflits27" value="">
+                <input type="hidden" name="conflits28" value="">
+                <input type="hidden" name="conflits29" value="">
+                <input type="hidden" name="conflits30" value="">
+                <input type="hidden" name="conflits31" value="">
+                <input type="hidden" name="conflits32" value="">
+                <input type="hidden" name="conflits33" value="">
+                <input type="hidden" name="conflits34" value="">
+                <input type="hidden" name="conflits35" value="">
+                <input type="hidden" name="conflits36" value="">
+                <input type="hidden" name="conflits37" value="">
+                <input type="hidden" name="conflits38" value="">
+                <input type="hidden" name="conflits39" value="">
+                <input type="hidden" name="conflits40" value="">
+                <input type="hidden" name="conflits41" value="">
+                <input type="hidden" name="conflits42" value="">
+                <input type="hidden" name="conflits43" value="">
+                <input type="hidden" name="conflits44" value="">
+                <input type="hidden" name="conflits45" value="">
+                <input type="hidden" name="conflits46" value="">
+                <input type="hidden" name="conflits47" value="">
+                <input type="hidden" name="conflits48" value="">
+                <input type="hidden" name="conflits49" value="">
+                <input type="hidden" name="conflits50" value="">
+                <input type="hidden" name="conflits51" value="">
+                <input type="hidden" name="conflits52" value="">
+                <input type="hidden" name="conflits53" value="">
+                <input type="hidden" name="conflits54" value="">
+                <input type="hidden" name="conflits55" value="">
+                <input type="hidden" name="conflits56" value="">
+                <input type="hidden" name="conflits57" value="">
+                <input type="hidden" name="conflits58" value="">
+                <input type="hidden" name="conflits59" value="">
+                <input type="hidden" name="conflits60" value="">
+                <input type="hidden" name="conflits61" value="">
+                <input type="hidden" name="conflits62" value="">
+                <input type="hidden" name="conflits63" value="">
+                <input type="hidden" name="conflits64" value="">
+                <input type="hidden" name="conflits65" value="">
+                <input type="hidden" name="conflits66" value="">
+                <input type="hidden" name="conflits67" value="">
+                <input type="hidden" name="conflits68" value="">
+                <input type="hidden" name="conflits69" value="">
+                <input type="hidden" name="conflits70" value="">
+                <input type="hidden" name="conflits71" value="">
+                <input type="hidden" name="conflits72" value="">
+                <input type="hidden" name="conflits73" value="">
+                <input type="hidden" name="conflits74" value="">
+                <input type="hidden" name="conflits75" value="">
+                <input type="hidden" name="conflits76" value="">
+                <input type="hidden" name="conflits77" value="">
+                <input type="hidden" name="conflits78" value="">
+                <input type="hidden" name="conflits79" value="">
+                <input type="hidden" name="conflits80" value="">
+                <input type="hidden" name="conflits81" value="">
+                <input type="hidden" name="conflits82" value="">
+                <input type="hidden" name="conflits83" value="">
+                <input type="hidden" name="conflits84" value="">
+                <input type="hidden" name="conflits85" value="">
+                <input type="hidden" name="conflits86" value="">
+                <input type="hidden" name="conflits87" value="">
+                <input type="hidden" name="conflits88" value="">
+                <input type="hidden" name="conflits89" value="">
+                <input type="hidden" name="conflits90" value="">
+                <input type="hidden" name="conflits91" value="">
+                <input type="hidden" name="conflits92" value="">
+                <input type="hidden" name="conflits93" value="">
+                <input type="hidden" name="conflits94" value="">
+                <input type="hidden" name="conflits95" value="">
+                <input type="hidden" name="conflits96" value="">
+                <input type="hidden" name="conflits97" value="">
+                <input type="hidden" name="conflits98" value="">
+                <input type="hidden" name="conflits99" value="">
+                <input type="hidden" name="conflits00" value="">
+                <input type="hidden" name="conflits01" value="">
+                <input type="hidden" name="conflits02" value="">
+                <input type="hidden" name="conflits03" value="">
+                <input type="hidden" name="conflits04" value="">
+                <input type="hidden" name="conflits05" value="">
+                <input type="hidden" name="conflits06" value="">
+                <input type="hidden" name="conflits07" value="">
+                <input type="hidden" name="conflits08" value="">
+                <input type="hidden" name="conflits09" value="">
+            </form>
+            <!-- Inclusion de footer.template  - debut -->
+        </div>
+        <div id="filetPiedDePage"></div>
+    </div>
+
+    <!-- Inclusion de footer.template  - fin -->
+    <div id="speechify-global-notifications"></div>
+    <div id="speechify-screenshot-mode" style="position: fixed; top: 0px; right: 0px; width: 100%; min-height: 100%; z-index: 9999; display: none;">
+    </div>
+    <script src="makeCalendar.js"></script>
+</body>
+
+</html>
